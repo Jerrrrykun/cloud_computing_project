@@ -94,15 +94,15 @@ def nlp():
 
 
 # For FBP service
-@app.route('/fbp', methods=['POST', 'GET'])
+@app.route('/fbp')
 def fbp():
     score = 5
-    default_pic_path = './sample_img.png'
-    filename = default_pic_path
-    if request.method == 'POST' and 'photo' in request.files:
-        filename = 'http://127.0.0.1:5000/'+filename
+    # default_pic_path = './sample_img.png'
+    # filename = default_pic_path
+    # if request.method == 'POST' and 'photo' in request.files:
+    #     filename = 'http://127.0.0.1:5000/'+filename
 
-    return render_template('fbp.html', score=score, filename=filename)
+    return render_template('fbp.html', score=score)
 
 
 # @app.route('/fbp/<filename>')
