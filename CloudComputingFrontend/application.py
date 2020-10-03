@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, send_from_directory, url_for
 import re
 import requests
-from flask_uploads import UploadSet, configure_uploads, IMAGES
+# from flask_uploads import UploadSet, configure_uploads, IMAGES
 import os
 
 
@@ -57,7 +57,7 @@ app = Flask(__name__)
 # Some basic setting for uploading image files
 # photos = UploadSet('photos', IMAGES)
 
-app.config['UPLOADED_FOLDER'] = UPLOAD_FOLDER
+# app.config['UPLOADED_FOLDER'] = UPLOAD_FOLDER
 # configure_uploads(app, photos)
 
 
@@ -105,9 +105,9 @@ def fbp():
     return render_template('fbp.html', score=score, filename=filename)
 
 
-@app.route('/fbp/<filename>')
-def send_image(filename):
-    return send_from_directory(UPLOAD_FOLDER, filename)
+# @app.route('/fbp/<filename>')
+# def send_image(filename):
+#     return send_from_directory(UPLOAD_FOLDER, filename)
 
 
 if __name__ == '__main__':
