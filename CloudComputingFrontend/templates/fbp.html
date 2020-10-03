@@ -7,8 +7,31 @@
     <div class="media-body">
     <div class="article-metadata">
         <a class="mr-2" >Face Beauty Prediction</a>
+        <form class="ui form" method="post" enctype=multipart/form-data action="#">
+            <p>Upload your image: <input type="file" id="uploadImg" value="Upload" onchange="xmTanUploadImg(this)"></p>
+            <script>
+              function xmTanUploadImg(obj) {
+                  var file = obj.files[0];
+                  var reader = new FileReader();
+                  reader.readAsDataURL(file);
+                  reader.onload = function (e) {    // Read the file
+                      var img = document.getElementById("selectImg");
+                      img.src = e.target.result;   // img.src = this.result / e.target == this
+                  };
+              }
+            </script>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+      <div class="ui inverted blue center aligned big segment">
           <div class="field">
-              <label><h2>Score: {{score}} (out of 5)</h2></label>
+              <div class="field">
+                <img src="" alt="" id="selectImg">
+              </div>
+              <div class="center">
+                <label><h3>Your Face Beauty Score is: {{score}} (out of 5)</h3></label>
+              </div>
           </div>
       </div>
 
