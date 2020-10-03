@@ -5,6 +5,8 @@ from flask_uploads import UploadSet, configure_uploads, IMAGES
 import os
 
 
+# UPLOAD_FOLDER = ''
+
 # Functions
 def code2text(embeded_code):
     res = re.findall(r"<p.*?>(.*?)</p >", embeded_code)
@@ -53,10 +55,10 @@ def twiiter_Sentiment(tweet_text):
 
 app = Flask(__name__)
 # Some basic setting for uploading image files
-photos = UploadSet('photos', IMAGES)
+# photos = UploadSet('photos', IMAGES)
 
-app.config['UPLOADED_PHOTOS_DEST'] = 'fbp'
-configure_uploads(app, photos)
+app.config['UPLOADED_FOLDER'] = UPLOAD_FOLDER
+# configure_uploads(app, photos)
 
 
 # A welcome page for using our ML service.
@@ -95,17 +97,17 @@ def nlp():
 @app.route('/fbp', methods=['POST', 'GET'])
 def fbp():
     score = 5
-    default_pic_path = '//sample_img.png'
+    default_pic_path = './sample_img.png'
     filename = default_pic_path
     if request.method == 'POST' and 'photo' in request.files:
-        filename = photos.save(request.files['photo'], name='{}'.format('usr_img'))
+        filename = 'http://127.0.0.1:5000/'+filename
 
-    return render_template('fbp.html', score=score, image_name="{}".format(filename))
+    return render_template('fbp.html', score=score, filename=filename)
 
 
 @app.route('/fbp/<filename>')
 def send_image(filename):
-    return send_from_directory("fbp", filename)
+    return send_from_directory(UPLOAD_FOLDER, filename)
 
 
 if __name__ == '__main__':
