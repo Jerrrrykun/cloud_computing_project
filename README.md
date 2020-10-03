@@ -1,2 +1,2 @@
-# cloud_computing_NLP
+# cloud_computing_project
 For tweets rumor detection
