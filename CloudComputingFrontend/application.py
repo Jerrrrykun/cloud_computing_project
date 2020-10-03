@@ -1,11 +1,7 @@
-from flask import Flask, request, render_template, send_from_directory, url_for
+from flask import Flask, request, render_template, url_for
 import re
 import requests
-# from flask_uploads import UploadSet, configure_uploads, IMAGES
-import os
 
-
-# UPLOAD_FOLDER = ''
 
 # Functions
 def code2text(embeded_code):
@@ -53,25 +49,23 @@ def twiiter_Sentiment(tweet_text):
         return res
 
 
-app = Flask(__name__)
+application = Flask(__name__)
 # Some basic setting for uploading image files
-# photos = UploadSet('photos', IMAGES)
 
-# app.config['UPLOADED_FOLDER'] = UPLOAD_FOLDER
-# configure_uploads(app, photos)
 
 
 # A welcome page for using our ML service.
-@app.route('/')
-@app.route('/hello')
+@application.route('/')
+@application.route('/hello')
 def hello():
     return render_template('hello.html')
 
 
 # For NLP service
-@app.route('/nlp', methods=["POST", "GET"])
+@application.route('/nlp', methods=["POST", "GET"])
 def nlp():
     default_response = 'You should input the Embedded CODE from the exact tweet!'
+    response0 = default_response
     response1 = default_response
     response2 = default_response
     response3 = default_response
@@ -81,34 +75,28 @@ def nlp():
         if request.form['tweet_code']:
             embedded_code = request.form['tweet_code']
             tweet_text = code2text(embedded_code)
+            response0 = tweet_text
             if tweet_text:
                 # Backend API needed!
                 response1 = twiiter_rumor(tweet_text)
                 response2 = twitter_keyPhrase(tweet_text)
                 response3 = twiiter_Sentiment(tweet_text)[0]['confidenceScores']
 
-        return render_template('nlp.html', response1=response1, response2=response2, response3=response3)
-
-    else:
-        return render_template('nlp.html', response1=default_response, response2=default_response, response3=default_response)
+    return render_template('nlp.html', response0=response0, response1=response1, response2=response2, response3=response3)
 
 
 # For FBP service
-@app.route('/fbp')
+@application.route('/fbp', methods=['POST', 'GET'])
 def fbp():
-    score = 5
-    # default_pic_path = './sample_img.png'
-    # filename = default_pic_path
-    # if request.method == 'POST' and 'photo' in request.files:
-    #     filename = 'http://127.0.0.1:5000/'+filename
-
-    return render_template('fbp.html', score=score)
-
-
-# @app.route('/fbp/<filename>')
-# def send_image(filename):
-#     return send_from_directory(UPLOAD_FOLDER, filename)
+    default_score = 0
+    if request.form == 'POST':
+        if request.files['file']:
+            score = 5
+            print('change')
+        return render_template('fbp.html', score=score)
+    else:
+        return render_template('fbp.html', score=default_score)
 
 
 if __name__ == '__main__':
-    app.run()
+    application.run(debug=True)
