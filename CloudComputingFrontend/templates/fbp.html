@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+    Face Beauty Prediction(Just for fun!!!)
+{% endblock title%}
+
+{% block content %}
+    <div class="media-body">
+
+    <div class="article-metadata">
+        <a class="mr-2" >Face Beauty Prediction</a>
+
+<!--        <form class="ui form" action="{{ url_for('fbp') }}" method="post">-->
+<!--            <div class="ui input">-->
+<!--                Upload Photo: <input type="file" name="photo">-->
+<!--            </div>-->
+<!--            <button class="ui button" type="submit">Submit</button>-->
+<!--        </form>-->
+<!--    </div>-->
+
+<!--    <div class="field">-->
+<!--        <img src=" {{url_for('send_image', filename=image_name)}}">-->
+<!--    </div>-->
+
+      <div class="ui inverted blue center aligned big segment">
+          <div class="field">
+              <label><h2>Score: {{score}} (out of 5)</h2></label>
+          </div>
+      </div>
+
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}
+    NLP Analysis
+{% endblock title%}
+
+{% block content %}
+    <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" >NLP Analysis</a>
+        <form action="#" method="post">
+            <p> Tweet needed to be detected:</p>
+            <p>Embedded Code: <input type="text" name="tweet_code" /></p>
+            <button type="submit">Submit</button>
+        </form>
+
+    <h2><a class="article-title">Tweets Disaster Rumor Detection</a></h2>
+    <p class="article-metadata">Result: {{response1}} </p>
+
+    <h2><a class="article-title">Key Phrase Extraction</a></h2>
+    <p class="article-content">Key Phrases Result: {{response2}} </p>
+    </div>
+    <h2><a class="article-title">Sentiment Analysis</a></h2>
+    <p class="article-content">Sentiment Probability Result: {{response3}} </p>
+    </div>
+
+{% endblock content%}
