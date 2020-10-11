@@ -10,3 +10,6 @@
   
 ## Demo pictures of the ML Service Website
   The following pictures are for the ML service website deployed on Elastic Beanstalk.
+  ![ML webservice_1](https://user-images.githubusercontent.com/63830845/95669611-37e9fe00-0bb5-11eb-98bb-deb72f52cd4a.png)
+  ![ML webservice_2](https://user-images.githubusercontent.com/63830845/95669618-459f8380-0bb5-11eb-9aad-4ae0e5cffa96.png)
+  ![ML webservice_3](https://user-images.githubusercontent.com/63830845/95669619-4fc18200-0bb5-11eb-98fd-e19c6297e6bf.png)
