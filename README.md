@@ -1,6 +1,9 @@
 # cloud_computing_project
   This project is mainly for recording the deployment of a simple web application on AWS.
 
+## Overview of the project
+![image](https://user-images.githubusercontent.com/63830845/97322154-77e5fc00-18aa-11eb-91a5-fc39fe9a423a.png)
+
 ## For tweets rumor detection
   This is under 'NLP' section. Except for tweet rumor detection, we have present the tweet texts from the embeded code of tweets, sentiment analysis and key phrase extraction. The models are from AWS Sagemakers(in the 'BlazingText' folder). Besides, we have just trained a bert model for tweet rumor detection and have a precision of 84% on [kaggle competition](https://www.kaggle.com/c/nlp-getting-started) without fine-tuning the parameters. The training and prediction file are on the BERT folder which you could train yourself a better model. Our trained model is [here](https://drive.google.com/file/d/1NlNkaEHokLfyps-LHfiRhVTOy9qK8ErO/view?usp=sharing)
 
